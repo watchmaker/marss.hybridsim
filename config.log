@@ -1,0 +1,493 @@
+file /home/pkt3c/Simulators/marss.nvdimm_hybridsim/qemu/SConfigure,line 332:
+	Configure(confdir = .sconf_temp)
+scons: Configure: Checking whether the C++ compiler works
+.sconf_temp/conftest_0.cpp <-
+  |
+  |int main()
+  |{
+  |    return 0;
+  |}
+  |
+g++ -o .sconf_temp/conftest_0.o -c .sconf_temp/conftest_0.cpp
+scons: Configure: yes
+
+.sconf_temp/conftest_1.cpp <-
+  |
+  |int main(void) {return 0;}
+  |
+g++ -o .sconf_temp/conftest_1.o -c .sconf_temp/conftest_1.cpp
+g++ -o .sconf_temp/conftest_1 .sconf_temp/conftest_1.o
+.sconf_temp/conftest_2.cpp <-
+  |
+  |    #if !defined(__i386__)
+  |    #error Not Define
+  |    #endif
+  |    int main(void) { return 0; }
+  |    
+g++ -o .sconf_temp/conftest_2.o -c .sconf_temp/conftest_2.cpp
+.sconf_temp/conftest_2.cpp:3:6: error: #error Not Define
+scons: Configure: no
+
+.sconf_temp/conftest_3.cpp <-
+  |
+  |    #if !defined(__x86_64__)
+  |    #error Not Define
+  |    #endif
+  |    int main(void) { return 0; }
+  |    
+g++ -o .sconf_temp/conftest_3.o -c .sconf_temp/conftest_3.cpp
+g++ -o .sconf_temp/conftest_3 .sconf_temp/conftest_3.o
+scons: Configure: yes
+
+.sconf_temp/conftest_4.cpp <-
+  |
+  |    #if !defined(__linux__)
+  |    #error Not Define
+  |    #endif
+  |    int main(void) { return 0; }
+  |    
+g++ -o .sconf_temp/conftest_4.o -c .sconf_temp/conftest_4.cpp
+g++ -o .sconf_temp/conftest_4 .sconf_temp/conftest_4.o
+scons: Configure: yes
+
+.sconf_temp/conftest_5.cpp <-
+  |
+  |    #include <sched.h>
+  |    #include <linux/futex.h>
+  |    void foo() {
+  |    #if !defined(CLONE_SETTLS) || !defined(FUTEX_WAIT)
+  |    #error bork
+  |    #endif
+  |    }
+  |    
+g++ -o .sconf_temp/conftest_5.o -c .sconf_temp/conftest_5.cpp
+g++ -o .sconf_temp/conftest_5 .sconf_temp/conftest_5.o
+/usr/bin/ld: /usr/lib/debug/usr/lib/crt1.o(.debug_info): relocation 0 has invalid symbol index 11
+/usr/bin/ld: /usr/lib/debug/usr/lib/crt1.o(.debug_info): relocation 1 has invalid symbol index 12
+/usr/bin/ld: /usr/lib/debug/usr/lib/crt1.o(.debug_info): relocation 2 has invalid symbol index 2
+/usr/bin/ld: /usr/lib/debug/usr/lib/crt1.o(.debug_info): relocation 3 has invalid symbol index 2
+/usr/bin/ld: /usr/lib/debug/usr/lib/crt1.o(.debug_info): relocation 4 has invalid symbol index 11
+/usr/bin/ld: /usr/lib/debug/usr/lib/crt1.o(.debug_info): relocation 5 has invalid symbol index 13
+/usr/bin/ld: /usr/lib/debug/usr/lib/crt1.o(.debug_info): relocation 6 has invalid symbol index 13
+/usr/bin/ld: /usr/lib/debug/usr/lib/crt1.o(.debug_info): relocation 7 has invalid symbol index 13
+/usr/bin/ld: /usr/lib/debug/usr/lib/crt1.o(.debug_info): relocation 8 has invalid symbol index 2
+/usr/bin/ld: /usr/lib/debug/usr/lib/crt1.o(.debug_info): relocation 9 has invalid symbol index 2
+/usr/bin/ld: /usr/lib/debug/usr/lib/crt1.o(.debug_info): relocation 10 has invalid symbol index 12
+/usr/bin/ld: /usr/lib/debug/usr/lib/crt1.o(.debug_info): relocation 11 has invalid symbol index 13
+/usr/bin/ld: /usr/lib/debug/usr/lib/crt1.o(.debug_info): relocation 12 has invalid symbol index 13
+/usr/bin/ld: /usr/lib/debug/usr/lib/crt1.o(.debug_info): relocation 13 has invalid symbol index 13
+/usr/bin/ld: /usr/lib/debug/usr/lib/crt1.o(.debug_info): relocation 14 has invalid symbol index 13
+/usr/bin/ld: /usr/lib/debug/usr/lib/crt1.o(.debug_info): relocation 15 has invalid symbol index 13
+/usr/bin/ld: /usr/lib/debug/usr/lib/crt1.o(.debug_info): relocation 16 has invalid symbol index 13
+/usr/bin/ld: /usr/lib/debug/usr/lib/crt1.o(.debug_info): relocation 17 has invalid symbol index 13
+/usr/bin/ld: /usr/lib/debug/usr/lib/crt1.o(.debug_info): relocation 18 has invalid symbol index 13
+/usr/bin/ld: /usr/lib/debug/usr/lib/crt1.o(.debug_info): relocation 19 has invalid symbol index 13
+/usr/bin/ld: /usr/lib/debug/usr/lib/crt1.o(.debug_info): relocation 20 has invalid symbol index 20
+/usr/lib/gcc/x86_64-linux-gnu/4.4.3/../../../../lib/crt1.o: In function `_start':
+(.text+0x20): undefined reference to `main'
+collect2: ld returned 1 exit status
+scons: Configure: no
+
+scons: Configure: Checking for C library z... 
+.sconf_temp/conftest_6.c <-
+  |
+  |
+  |#include "zlib.h"
+  |
+  |int
+  |main() {
+  |  
+  |return 0;
+  |}
+  |
+g++ -o .sconf_temp/conftest_6.o -c .sconf_temp/conftest_6.c
+g++ -o .sconf_temp/conftest_6 .sconf_temp/conftest_6.o -lz
+scons: Configure: yes
+
+.sconf_temp/conftest_7.cpp <-
+  |
+  |    #include <SDL.h>
+  |    #if defined(SDL_VIDEO_DRIVER_X11)
+  |    #include <X11/XKBlib.h>
+  |    #else
+  |    #error No X11 support
+  |    #endif
+  |    int main(void) {return 0;}
+  |    
+g++ -o .sconf_temp/conftest_7.o -c -D_GNU_SOURCE=1 -D_REENTRANT -I/usr/include/SDL .sconf_temp/conftest_7.cpp
+g++ -o .sconf_temp/conftest_7 .sconf_temp/conftest_7.o -L/usr/lib -lz -lSDL -lasound -lm -ldl -lesd -lpulse-simple -lpulse -ldirectfb -lfusion -ldirect -laa -lcaca -lpthread
+scons: Configure: yes
+
+scons: Configure: Checking for C library X11... 
+.sconf_temp/conftest_8.c <-
+  |
+  |
+  |
+  |int
+  |main() {
+  |  
+  |return 0;
+  |}
+  |
+g++ -o .sconf_temp/conftest_8.o -c -D_GNU_SOURCE=1 -D_REENTRANT -I/usr/include/SDL .sconf_temp/conftest_8.c
+g++ -o .sconf_temp/conftest_8 .sconf_temp/conftest_8.o -L/usr/lib -lz -lSDL -lasound -lm -ldl -lesd -lpulse-simple -lpulse -ldirectfb -lfusion -ldirect -laa -lcaca -lpthread -lX11
+scons: Configure: yes
+
+.sconf_temp/conftest_9.cpp <-
+  |
+  |    #include <fnmatch.h>
+  |    int main(void)
+  |    {
+  |        fnmatch("foo", "foo", 0);
+  |        return 0;
+  |    }
+  |    
+g++ -o .sconf_temp/conftest_9.o -c -D_GNU_SOURCE=1 -D_REENTRANT -I/usr/include/SDL .sconf_temp/conftest_9.cpp
+g++ -o .sconf_temp/conftest_9 .sconf_temp/conftest_9.o -L/usr/lib -lz -lSDL -lasound -lm -ldl -lesd -lpulse-simple -lpulse -ldirectfb -lfusion -ldirect -laa -lcaca -lpthread -lX11
+.sconf_temp/conftest_9 > .sconf_temp/conftest_9.out
+scons: Configure: yes
+
+scons: Configure: Checking for C library vdeplug... 
+.sconf_temp/conftest_10.c <-
+  |
+  |
+  |
+  |int
+  |main() {
+  |  
+  |return 0;
+  |}
+  |
+g++ -o .sconf_temp/conftest_10.o -c -D_GNU_SOURCE=1 -D_REENTRANT -I/usr/include/SDL .sconf_temp/conftest_10.c
+g++ -o .sconf_temp/conftest_10 .sconf_temp/conftest_10.o -L/usr/lib -lz -lSDL -lasound -lm -ldl -lesd -lpulse-simple -lpulse -ldirectfb -lfusion -ldirect -laa -lcaca -lpthread -lX11 -lvdeplug
+/usr/bin/ld: cannot find -lvdeplug
+collect2: ld returned 1 exit status
+scons: Configure: no
+
+.sconf_temp/conftest_11.cpp <-
+  |
+  |    #include <brlapi.h>
+  |    int main(void) { return brlapi_openConnection(NULL, NULL, NULL); }
+  |    
+g++ -o .sconf_temp/conftest_11.o -c -D_GNU_SOURCE=1 -D_REENTRANT -I/usr/include/SDL .sconf_temp/conftest_11.cpp
+.sconf_temp/conftest_11.cpp:2:24: error: brlapi.h: No such file or directory
+.sconf_temp/conftest_11.cpp: In function ‘int main()’:
+.sconf_temp/conftest_11.cpp:3: error: ‘NULL’ was not declared in this scope
+.sconf_temp/conftest_11.cpp:3: error: ‘brlapi_openConnection’ was not declared in this scope
+scons: Configure: no
+
+scons: Configure: Checking for C library curses... 
+.sconf_temp/conftest_12.c <-
+  |
+  |
+  |#include "curses.h"
+  |
+  |int
+  |main() {
+  |  
+  |return 0;
+  |}
+  |
+g++ -o .sconf_temp/conftest_12.o -c -D_GNU_SOURCE=1 -D_REENTRANT -I/usr/include/SDL .sconf_temp/conftest_12.c
+g++ -o .sconf_temp/conftest_12 .sconf_temp/conftest_12.o -L/usr/lib -lz -lSDL -lasound -lm -ldl -lesd -lpulse-simple -lpulse -ldirectfb -lfusion -ldirect -laa -lcaca -lpthread -lX11 -lcurses
+scons: Configure: yes
+
+scons: Configure: Checking for C library pthread... 
+.sconf_temp/conftest_13.c <-
+  |
+  |
+  |#include "pthread.h"
+  |
+  |int
+  |main() {
+  |  
+  |return 0;
+  |}
+  |
+g++ -o .sconf_temp/conftest_13.o -c -D_GNU_SOURCE=1 -D_REENTRANT -I/usr/include/SDL .sconf_temp/conftest_13.c
+g++ -o .sconf_temp/conftest_13 .sconf_temp/conftest_13.o -L/usr/lib -lz -lSDL -lasound -lm -ldl -lesd -lpulse-simple -lpulse -ldirectfb -lfusion -ldirect -laa -lcaca -lpthread -lX11 -lcurses -lpthread
+scons: Configure: yes
+
+.sconf_temp/conftest_14.cpp <-
+  |
+  |    #include <sys/types.h>
+  |    #include <sys/uio.h>
+  |    #include <unistd.h>
+  |    int main(void) { struct iovec iov; return 0; }
+  |    
+g++ -o .sconf_temp/conftest_14.o -c -D_GNU_SOURCE=1 -D_REENTRANT -I/usr/include/SDL .sconf_temp/conftest_14.cpp
+g++ -o .sconf_temp/conftest_14 .sconf_temp/conftest_14.o -L/usr/lib -lz -lSDL -lasound -lm -ldl -lesd -lpulse-simple -lpulse -ldirectfb -lfusion -ldirect -laa -lcaca -lpthread -lX11 -lcurses -lpthread
+scons: Configure: yes
+
+scons: Configure: Checking for C library fdt... 
+.sconf_temp/conftest_15.c <-
+  |
+  |
+  |
+  |int
+  |main() {
+  |  
+  |return 0;
+  |}
+  |
+g++ -o .sconf_temp/conftest_15.o -c -D_GNU_SOURCE=1 -D_REENTRANT -I/usr/include/SDL .sconf_temp/conftest_15.c
+g++ -o .sconf_temp/conftest_15 .sconf_temp/conftest_15.o -L/usr/lib -lz -lSDL -lasound -lm -ldl -lesd -lpulse-simple -lpulse -ldirectfb -lfusion -ldirect -laa -lcaca -lpthread -lX11 -lcurses -lpthread -lfdt
+/usr/bin/ld: cannot find -lfdt
+collect2: ld returned 1 exit status
+scons: Configure: no
+
+.sconf_temp/conftest_16.cpp <-
+  |
+  |    #include <sys/types.h>
+  |    #include <sys/uio.h>
+  |    #include <unistd.h>
+  |    int main(void) { preadv; }
+  |    
+g++ -o .sconf_temp/conftest_16.o -c -D_GNU_SOURCE=1 -D_REENTRANT -I/usr/include/SDL .sconf_temp/conftest_16.cpp
+g++ -o .sconf_temp/conftest_16 .sconf_temp/conftest_16.o -L/usr/lib -lz -lSDL -lasound -lm -ldl -lesd -lpulse-simple -lpulse -ldirectfb -lfusion -ldirect -laa -lcaca -lpthread -lX11 -lcurses -lpthread
+scons: Configure: yes
+
+.sconf_temp/conftest_17.cpp <-
+  |
+  |    #define _ATFILE_SOURCE
+  |    #include <sys/types.h>
+  |    #include <fcntl.h>
+  |    #include <unistd.h>
+  |
+  |    int
+  |    main(void)
+  |    {
+  |        /* try to unlink nonexisting file */
+  |        return (unlinkat(AT_FDCWD, "nonexistent_file", 0));
+  |    }
+  |    
+g++ -o .sconf_temp/conftest_17.o -c -D_GNU_SOURCE=1 -D_REENTRANT -I/usr/include/SDL .sconf_temp/conftest_17.cpp
+g++ -o .sconf_temp/conftest_17 .sconf_temp/conftest_17.o -L/usr/lib -lz -lSDL -lasound -lm -ldl -lesd -lpulse-simple -lpulse -ldirectfb -lfusion -ldirect -laa -lcaca -lpthread -lX11 -lcurses -lpthread
+scons: Configure: yes
+
+.sconf_temp/conftest_18.cpp <-
+  |
+  |    #include <sys/inotify.h>
+  |
+  |    int
+  |    main(void)
+  |    {
+  |        /* try to start inotify */
+  |        return inotify_init();
+  |    }
+  |    
+g++ -o .sconf_temp/conftest_18.o -c -D_GNU_SOURCE=1 -D_REENTRANT -I/usr/include/SDL .sconf_temp/conftest_18.cpp
+g++ -o .sconf_temp/conftest_18 .sconf_temp/conftest_18.o -L/usr/lib -lz -lSDL -lasound -lm -ldl -lesd -lpulse-simple -lpulse -ldirectfb -lfusion -ldirect -laa -lcaca -lpthread -lX11 -lcurses -lpthread
+scons: Configure: yes
+
+.sconf_temp/conftest_19.cpp <-
+  |
+  |    #define _ATFILE_SOURCE
+  |    #define _GNU_SOURCE
+  |    #include <stddef.h>
+  |    #include <fcntl.h>
+  |
+  |    int main(void)
+  |    {
+  |        utimensat(AT_FDCWD, "foo", NULL, 0);
+  |        futimens(0, NULL);
+  |        return 0;
+  |    }
+  |    
+g++ -o .sconf_temp/conftest_19.o -c -D_GNU_SOURCE=1 -D_REENTRANT -I/usr/include/SDL .sconf_temp/conftest_19.cpp
+.sconf_temp/conftest_19.cpp:3:1: warning: "_GNU_SOURCE" redefined
+<command-line>: warning: this is the location of the previous definition
+g++ -o .sconf_temp/conftest_19 .sconf_temp/conftest_19.o -L/usr/lib -lz -lSDL -lasound -lm -ldl -lesd -lpulse-simple -lpulse -ldirectfb -lfusion -ldirect -laa -lcaca -lpthread -lX11 -lcurses -lpthread
+scons: Configure: yes
+
+.sconf_temp/conftest_20.cpp <-
+  |
+  |    #define _GNU_SOURCE
+  |    #include <unistd.h>
+  |    #include <fcntl.h>
+  |
+  |    int main(void)
+  |    {
+  |        int pipefd[2];
+  |        pipe2(pipefd, O_CLOEXEC);
+  |        return 0;
+  |    }
+  |    
+g++ -o .sconf_temp/conftest_20.o -c -D_GNU_SOURCE=1 -D_REENTRANT -I/usr/include/SDL .sconf_temp/conftest_20.cpp
+.sconf_temp/conftest_20.cpp:2:1: warning: "_GNU_SOURCE" redefined
+<command-line>: warning: this is the location of the previous definition
+g++ -o .sconf_temp/conftest_20 .sconf_temp/conftest_20.o -L/usr/lib -lz -lSDL -lasound -lm -ldl -lesd -lpulse-simple -lpulse -ldirectfb -lfusion -ldirect -laa -lcaca -lpthread -lX11 -lcurses -lpthread
+scons: Configure: yes
+
+.sconf_temp/conftest_21.cpp <-
+  |
+  |    #define _GNU_SOURCE
+  |    #include <sys/socket.h>
+  |    #include <stddef.h>
+  |
+  |    int main(void)
+  |    {
+  |        accept4(0, NULL, NULL, SOCK_CLOEXEC);
+  |        return 0;
+  |    }
+  |    
+g++ -o .sconf_temp/conftest_21.o -c -D_GNU_SOURCE=1 -D_REENTRANT -I/usr/include/SDL .sconf_temp/conftest_21.cpp
+.sconf_temp/conftest_21.cpp:2:1: warning: "_GNU_SOURCE" redefined
+<command-line>: warning: this is the location of the previous definition
+g++ -o .sconf_temp/conftest_21 .sconf_temp/conftest_21.o -L/usr/lib -lz -lSDL -lasound -lm -ldl -lesd -lpulse-simple -lpulse -ldirectfb -lfusion -ldirect -laa -lcaca -lpthread -lX11 -lcurses -lpthread
+scons: Configure: yes
+
+.sconf_temp/conftest_22.cpp <-
+  |
+  |    #define _GNU_SOURCE
+  |    #include <unistd.h>
+  |    #include <fcntl.h>
+  |    #include <limits.h>
+  |
+  |    int main(void)
+  |    {
+  |        int len, fd;
+  |        len = tee(STDIN_FILENO, STDOUT_FILENO, INT_MAX, SPLICE_F_NONBLOCK);
+  |        splice(STDIN_FILENO, NULL, fd, NULL, len, SPLICE_F_MOVE);
+  |        return 0;
+  |    }
+  |    
+g++ -o .sconf_temp/conftest_22.o -c -D_GNU_SOURCE=1 -D_REENTRANT -I/usr/include/SDL .sconf_temp/conftest_22.cpp
+.sconf_temp/conftest_22.cpp:2:1: warning: "_GNU_SOURCE" redefined
+<command-line>: warning: this is the location of the previous definition
+g++ -o .sconf_temp/conftest_22 .sconf_temp/conftest_22.o -L/usr/lib -lz -lSDL -lasound -lm -ldl -lesd -lpulse-simple -lpulse -ldirectfb -lfusion -ldirect -laa -lcaca -lpthread -lX11 -lcurses -lpthread
+scons: Configure: yes
+
+.sconf_temp/conftest_23.cpp <-
+  |
+  |    #include <sys/eventfd.h>
+  |    int main(void)
+  |    {
+  |        int efd = eventfd(0, 0);
+  |        return 0;
+  |    }
+  |    
+g++ -o .sconf_temp/conftest_23.o -c -D_GNU_SOURCE=1 -D_REENTRANT -I/usr/include/SDL .sconf_temp/conftest_23.cpp
+g++ -o .sconf_temp/conftest_23 .sconf_temp/conftest_23.o -L/usr/lib -lz -lSDL -lasound -lm -ldl -lesd -lpulse-simple -lpulse -ldirectfb -lfusion -ldirect -laa -lcaca -lpthread -lX11 -lcurses -lpthread
+scons: Configure: yes
+
+.sconf_temp/conftest_24.cpp <-
+  |
+  |    #include <fcntl.h>
+  |
+  |    int main(void)
+  |    {
+  |        fallocate(0, 0, 0, 0);
+  |        return 0;
+  |    }
+  |    
+g++ -o .sconf_temp/conftest_24.o -c -D_GNU_SOURCE=1 -D_REENTRANT -I/usr/include/SDL .sconf_temp/conftest_24.cpp
+g++ -o .sconf_temp/conftest_24 .sconf_temp/conftest_24.o -L/usr/lib -lz -lSDL -lasound -lm -ldl -lesd -lpulse-simple -lpulse -ldirectfb -lfusion -ldirect -laa -lcaca -lpthread -lX11 -lcurses -lpthread
+scons: Configure: yes
+
+.sconf_temp/conftest_25.cpp <-
+  |
+  |    #include <unistd.h>
+  |    int main(void)
+  |    {
+  |        dup3(0, 0, 0);
+  |        return 0;
+  |    }
+  |    
+g++ -o .sconf_temp/conftest_25.o -c -D_GNU_SOURCE=1 -D_REENTRANT -I/usr/include/SDL .sconf_temp/conftest_25.cpp
+g++ -o .sconf_temp/conftest_25 .sconf_temp/conftest_25.o -L/usr/lib -lz -lSDL -lasound -lm -ldl -lesd -lpulse-simple -lpulse -ldirectfb -lfusion -ldirect -laa -lcaca -lpthread -lX11 -lcurses -lpthread
+scons: Configure: yes
+
+scons: Configure: Checking for C header file signal.h... 
+.sconf_temp/conftest_26.c <-
+  |
+  |#include "signal.h"
+  |
+  |
+g++ -o .sconf_temp/conftest_26.o -c -D_GNU_SOURCE=1 -D_REENTRANT -I/usr/include/SDL .sconf_temp/conftest_26.c
+scons: Configure: yes
+
+scons: Configure: Checking for C header file time.h... 
+.sconf_temp/conftest_27.c <-
+  |
+  |#include "time.h"
+  |
+  |
+g++ -o .sconf_temp/conftest_27.o -c -D_GNU_SOURCE=1 -D_REENTRANT -I/usr/include/SDL .sconf_temp/conftest_27.c
+scons: Configure: yes
+
+scons: Configure: Checking for C library rt... 
+.sconf_temp/conftest_28.c <-
+  |
+  |
+  |
+  |int
+  |main() {
+  |  
+  |return 0;
+  |}
+  |
+g++ -o .sconf_temp/conftest_28.o -c -D_GNU_SOURCE=1 -D_REENTRANT -I/usr/include/SDL .sconf_temp/conftest_28.c
+g++ -o .sconf_temp/conftest_28 .sconf_temp/conftest_28.o -L/usr/lib -lz -lSDL -lasound -lm -ldl -lesd -lpulse-simple -lpulse -ldirectfb -lfusion -ldirect -laa -lcaca -lpthread -lX11 -lcurses -lpthread -lrt
+scons: Configure: yes
+
+scons: Configure: Checking for C function fdatasync()... 
+.sconf_temp/conftest_29.c <-
+  |
+  |
+  |#include <assert.h>
+  |
+  |#ifdef __cplusplus
+  |extern "C"
+  |#endif
+  |char fdatasync();
+  |
+  |int main() {
+  |#if defined (__stub_fdatasync) || defined (__stub___fdatasync)
+  |  fail fail fail
+  |#else
+  |  fdatasync();
+  |#endif
+  |
+  |  return 0;
+  |}
+  |
+g++ -o .sconf_temp/conftest_29.o -c -D_GNU_SOURCE=1 -D_REENTRANT -I/usr/include/SDL .sconf_temp/conftest_29.c
+g++ -o .sconf_temp/conftest_29 .sconf_temp/conftest_29.o -L/usr/lib -lz -lSDL -lasound -lm -ldl -lesd -lpulse-simple -lpulse -ldirectfb -lfusion -ldirect -laa -lcaca -lpthread -lX11 -lcurses -lpthread -lrt
+scons: Configure: yes
+
+scons: Configure: Checking for C library sasl... 
+.sconf_temp/conftest_30.c <-
+  |
+  |
+  |#include "sasl.h"
+  |
+  |int
+  |main() {
+  |  
+  |return 0;
+  |}
+  |
+g++ -o .sconf_temp/conftest_30.o -c -D_GNU_SOURCE=1 -D_REENTRANT -I/usr/include/SDL .sconf_temp/conftest_30.c
+.sconf_temp/conftest_30.c:3:18: error: sasl.h: No such file or directory
+scons: Configure: no
+
+scons: Configure: Checking for C header file byteswap.h... 
+.sconf_temp/conftest_31.c <-
+  |
+  |#include "byteswap.h"
+  |
+  |
+g++ -o .sconf_temp/conftest_31.o -c -D_GNU_SOURCE=1 -D_REENTRANT -I/usr/include/SDL .sconf_temp/conftest_31.c
+scons: Configure: yes
+
+scons: Configure: Checking for C header file machine/bswap.h... 
+.sconf_temp/conftest_32.c <-
+  |
+  |#include "machine/bswap.h"
+  |
+  |
+g++ -o .sconf_temp/conftest_32.o -c -D_GNU_SOURCE=1 -D_REENTRANT -I/usr/include/SDL .sconf_temp/conftest_32.c
+.sconf_temp/conftest_32.c:2:27: error: machine/bswap.h: No such file or directory
+scons: Configure: no
+

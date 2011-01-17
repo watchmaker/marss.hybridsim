@@ -44,11 +44,11 @@ MemoryController::MemoryController(W8 coreid, char *name,
 #ifdef DRAMSIM
 //	mem = new MemorySystem(0, "ini/DDR3_micron_64M_8B_x4_sg15.ini", "system.ini", "../DRAMSim2", "MARSS"); /* this will NOT work */
 //	mem = DRAMSim::getMemorySystemInstance(0, "ini/DDR3_micron_64M_8B_x4_sg15.ini", "system.ini", "../DRAMSim2", "MARSS"); 
-	mem = HybridSim::getMemorySystemInstance(1);
+	mem = NVHybridSim::getMemorySystemInstance(1);
 
-	typedef HybridSim::Callback <Memory::MemoryController, void, uint, uint64_t, uint64_t> hybridsim_callback_t;
-	HybridSim::TransactionCompleteCB *read_cb = new hybridsim_callback_t(this, &MemoryController::read_return_cb);
-	HybridSim::TransactionCompleteCB *write_cb = new hybridsim_callback_t(this, &MemoryController::write_return_cb);
+	typedef NVHybridSim::Callback <Memory::MemoryController, void, uint, uint64_t, uint64_t> nvhybridsim_callback_t;
+	NVHybridSim::TransactionCompleteCB *read_cb = new nvhybridsim_callback_t(this, &MemoryController::read_return_cb);
+	NVHybridSim::TransactionCompleteCB *write_cb = new nvhybridsim_callback_t(this, &MemoryController::write_return_cb);
 	mem->RegisterCallbacks(read_cb, write_cb, NULL);
 
 #endif

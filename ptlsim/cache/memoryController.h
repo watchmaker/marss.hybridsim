@@ -35,8 +35,8 @@
 #ifdef DRAMSIM
 //#include <DRAMSim.h>
 //using DRAMSim::MemorySystem;
-#include <HybridSim.h>
-using HybridSim::HybridSystem;
+#include <NVHybridSim.h>
+using NVHybridSim::NVHybridSystem;
 #endif
 
 
@@ -87,7 +87,7 @@ class MemoryController : public Controller
 		void read_return_cb(uint, uint64_t, uint64_t);
 		void write_return_cb(uint, uint64_t, uint64_t);
 		//MemorySystem *mem;
-		HybridSystem *mem;
+		NVHybridSystem *mem;
 #endif
 		MemoryController(W8 coreid, char *name,
 				 MemoryHierarchy *memoryHierarchy);
